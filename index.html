@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>todolist 1.0.0 - 梦为努力浇了水</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.container{
+			width: 1000px;
+			margin: 0 auto;
+		}
+		.input-area{
+			padding: 30px;
+		}
+		.input-area input{
+			width: 200px;
+			height: 20px;
+		}
+		.show-area{
+			margin-top: 20px;
+
+		}
+		.show-area table{
+			width: 100%;
+		}
+		.show-area table tbody td{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="input-area">
+			<span>请输入待办事项</span>
+			<input type="text" id="inputText" name="" placeholder="按enter键保存">
+		</div>
+		<div class="show-area">
+			<table cellpadding="0" cellspacing="0" border="1">
+				<thead>
+					<tr>
+						<th>序号</th>
+						<th>事项</th>
+						<th>时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="3">暂无数据呢...</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="./js/lib/sea.js"></script>
+<script type="text/javascript">
+	seajs.config({
+		base:'./js/',
+		alias:{
+			'jquery':'lib/jquery.cmd.min.js',
+			'tool':'lib/toolsUtil.js',
+			'localStorageHelper':'lib/localStorageHelper.js',
+			'tableRenderHelper':'lib/tableRenderHelper.js'
+		}
+	});
+	seajs.use('index');
+</script>
+</html>
