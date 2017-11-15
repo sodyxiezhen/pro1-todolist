@@ -30,7 +30,7 @@ define(function(require,exports,module){
 	//获取当前最大的记录编号
 	function getMaxId(){
 		var dataList = getAllDataFromLocalStorage();
-		if (! dataList) {
+		if (!dataList || dataList.length == 0) {
 			return 0;
 		}
 		var lastObj = dataList[dataList.length - 1];
@@ -62,8 +62,54 @@ define(function(require,exports,module){
 	};
 	//读取所有记录 
 	var getAllTodoList = getAllDataFromLocalStorage;
+
+	//删掉一条记录
+	var deleteOneList = function(id){
+		var lists = getAllDataFromLocalStorage();
+		for(var i = 0;i<lists.length;i++){
+			if(lists[i].id == id){
+				lists.splice(i,1);
+				break;
+			}
+		}
+		//记得这里放回去
+		console.log(lists);
+		setAllData(lists);
+		return true;
+	};
+	//获取一条记录
+	var getOneInfo = function(id){
+		var lists = getAllDataFromLocalStorage();
+		for(var item of lists){
+			if(item.id == id){
+				return item;
+			}
+		}
+		return false;
+	};
+	//修改一条记录
+	var saveOneInfo = function(id, content){
+		var lists = getAllDataFromLocalStorage();
+		var flag = false;
+		for(var i = 0;i<lists.length;i++){
+			if(lists[i].id == id){
+				lists[i].content = content;
+				lists[i].date = getNowDate();
+				flag = true;
+				break;
+			}
+		}
+		if (flag) {
+			//保存
+			setAllData(lists);
+		}
+		return flag;
+	};
 	module.exports = {
 		'getAllTodoList':getAllTodoList,
 		'appendOneTodoList':appendOneTodoList,
+		'deleteOneList':deleteOneList,
+		'getOneInfo':getOneInfo,
+		'saveOneInfo':saveOneInfo
 	};
 });

@@ -1,0 +1,11 @@
+seajs.config({
+		base:'./js/',
+		alias:{
+			'tool':'lib/toolsUtil.js',
+			'localStorageHelper':'lib/localStorageHelper.js',
+			'tableRenderHelper':'lib/tableRenderHelper.js',
+			'layer':'lib/layer/layer.js',
+			'layerHelper':'lib/layerHelper.js',
+			'request':'lib/request.js',
+		}
+	});
